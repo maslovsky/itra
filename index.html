@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="foo">
+        <a href="https://maslovsky.github.io/itra1/" class="task-link">
+            <h1>Task 1</h1>
+        </a>
+        
+        <a href="#" class="task-link">
+            <h1>Task 2 (Not Found)</h1>
+        </a>
+
+        <a href="https://maslovsky.github.io/itra3/" class="task-link">
+            <h1>Task 3</h1>
+        </a>
+
+        <a href="https://maslovsky.github.io/itra4/" class="task-link">
+            <h1>Task 4</h1>
+        </a>
+
+        <a href="https://maslovsky.github.io/itra5/" class="task-link">
+            <h1>Task 5</h1>
+        </a>
+    </div>
+
+    <script>
+        const r = {
+            value: 0,
+            dir: 1
+        };
+        const g = {
+            value: 0,
+            dir: 1
+        };
+        const b = {
+            value: 0,
+            dir: 1
+        };
+
+        setInterval(() => {
+            changeChanel(r);
+            changeChanel(g);
+            changeChanel(b);
+
+            document.body.style.backgroundColor = `rgb(${r.value}, ${g.value}, ${b.value})`;
+
+            const taskLinks = document.querySelectorAll('.task-link');
+
+            taskLinks.forEach(x => x.style.color = `rgb(${255 - r.value}, ${255 - g.value}, ${255 - b.value})`)
+        }, 10);
+
+        function changeChanel(chanel) {
+            chanel.value += chanel.dir * getRandomInt(10, 40);
+
+            if (chanel.value > 255) {
+                chanel.value = 255;
+                chanel.dir = -1;
+            }
+
+            if (chanel.value < 0) {
+                chanel.value = 0;
+                chanel.dir = 1;
+            }
+        }
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    </script>
+</body>
+
+</html>

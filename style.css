@@ -1,0 +1,7 @@
+.task-link {
+    text-decoration: none;
+
+    filter: invert(50%);
+
+    font-size: 30px;
+}
